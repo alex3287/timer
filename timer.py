@@ -3,22 +3,44 @@ from tkinter import ttk
 import time
 
 
+TIME = 0
+
 def tick():
-    now = time.strftime('%H:%M:%S')
+    global TIME
+    h = 0
+    m = TIME // 60
+    s = TIME % 60
+    now = '0{}:{}:{}'.format(h, m, s)
     clock.configure(text=now)
+    TIME -= 1
     root.after(1000, tick)
 
 
 def five_minutes():
-    clock.configure(text='00:05:00')
+    global TIME
+    TIME = 300
+    h = 0
+    m = TIME // 60
+    s = 0
+    clock.configure(text='0{}:0{}:0{}'.format(h, m, s))
 
 
 def ten_minutes():
-    clock.configure(text='00:10:00')
+    global TIME
+    TIME = 600
+    h = 0
+    m = TIME // 60
+    s = 0
+    clock.configure(text='0{}:{}:0{}'.format(h, m, s))
 
 
 def fifteen_minutes():
-    clock.configure(text='00:15:00')
+    global TIME
+    TIME = 900
+    h = 0
+    m = TIME // 60
+    s = 0
+    clock.configure(text='0{}:{}:0{}'.format(h, m, s))
 
 
 def stop():
